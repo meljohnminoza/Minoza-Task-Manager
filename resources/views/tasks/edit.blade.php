@@ -2,55 +2,80 @@
 <html>
 <head>
     <title>Edit Task</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 
-    <h1>Edit Task</h1>
+<div class="container">
 
-    <form action="{{ route('tasks.update', $task) }}" method="POST">
+    <div class="header">
+        <h1>Edit Task</h1>
+        <p>Update the details of your task.</p>
+    </div>
 
-        @csrf
-        @method('PUT')
+    <div class="form-card">
 
-        <label>Task Name:</label>
-        <br>
-        <input type="text" name="task_name" value="{{ $task->task_name }}" required>
+        <form action="{{ route('tasks.update', $task) }}" method="POST">
 
-        <br><br>
+            @csrf
+            @method('PUT')
 
-        <label>Description:</label>
-        <br>
-        <textarea name="description">{{ $task->description }}</textarea>
+            <div class="form-group">
+                <label>Task Name</label>
+                <input
+                    type="text"
+                    name="task_name"
+                    value="{{ $task->task_name }}"
+                    required
+                >
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description">{{ $task->description }}</textarea>
+            </div>
 
-        <label>Status:</label>
-        <br>
-        <select name="status">
-            <option value="Pending" {{ $task->status == 'Pending' ? 'selected' : '' }}>
-                Pending
-            </option>
+            <div class="form-group">
+                <label>Status</label>
 
-            <option value="Completed" {{ $task->status == 'Completed' ? 'selected' : '' }}>
-                Completed
-            </option>
-        </select>
+                <select name="status">
 
-        <br><br>
+                    <option value="Pending"
+                        {{ $task->status == 'Pending' ? 'selected' : '' }}>
+                        Pending
+                    </option>
 
-        <label>Due Date:</label>
-        <br>
-        <input type="date" name="due_date" value="{{ $task->due_date }}">
+                    <option value="Completed"
+                        {{ $task->status == 'Completed' ? 'selected' : '' }}>
+                        Completed
+                    </option>
 
-        <br><br>
+                </select>
+            </div>
 
-        <button type="submit">Update Task</button>
+            <div class="form-group">
+                <label>Due Date</label>
 
-    </form>
+                <input
+                    type="date"
+                    name="due_date"
+                    value="{{ $task->due_date }}"
+                >
+            </div>
 
-    <br>
+            <button type="submit" class="btn btn-primary">
+                Update Task
+            </button>
 
-    <a href="{{ route('tasks.index') }}">Back to Tasks</a>
+            <a href="{{ route('tasks.index') }}" class="back-link">
+                Back to Tasks
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
 
 </body>
 </html>

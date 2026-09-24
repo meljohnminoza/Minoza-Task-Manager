@@ -2,49 +2,60 @@
 <html>
 <head>
     <title>Add Task</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 
-    <h1>Add New Task</h1>
+<div class="container">
 
-    <form action="{{ route('tasks.store') }}" method="POST">
+    <div class="header">
+        <h1>Add New Task</h1>
+        <p>Create a new task and keep track of your work.</p>
+    </div>
 
-        @csrf
+    <div class="form-card">
 
-        <label>Task Name:</label>
-        <br>
-        <input type="text" name="task_name" required>
+        <form action="{{ route('tasks.store') }}" method="POST">
 
-        <br><br>
+            @csrf
 
-        <label>Description:</label>
-        <br>
-        <textarea name="description"></textarea>
+            <div class="form-group">
+                <label>Task Name</label>
+                <input type="text" name="task_name" required>
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description"></textarea>
+            </div>
 
-        <label>Status:</label>
-        <br>
-        <select name="status">
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
-        </select>
+            <div class="form-group">
+                <label>Status</label>
 
-        <br><br>
+                <select name="status">
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
 
-        <label>Due Date:</label>
-        <br>
-        <input type="date" name="due_date">
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" name="due_date">
+            </div>
 
-        <br><br>
+            <button type="submit" class="btn btn-primary">
+                Save Task
+            </button>
 
-        <button type="submit">Save Task</button>
+            <a href="{{ route('tasks.index') }}" class="back-link">
+                Back to Tasks
+            </a>
 
-    </form>
+        </form>
 
-    <br>
+    </div>
 
-    <a href="{{ route('tasks.index') }}">Back to Tasks</a>
+</div>
 
 </body>
 </html>

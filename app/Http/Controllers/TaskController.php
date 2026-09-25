@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
 {
@@ -11,7 +12,16 @@ class TaskController extends Controller
     {
         $tasks = Task::latest()->get();
 
-        return view('tasks.index', compact('tasks'));
+        $totalTasks = Task::count();
+        $pendingTasks = Task::where('status', 'Pending')->count();
+        $completedTasks = Task::where('status', 'Completed')->count();
+
+        return view('tasks.index', compact(
+            'tasks',
+            'totalTasks',
+            'pendingTasks',
+            'completedTasks'
+        ));
     }
 
     public function create()

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Task</title>
+    <title>Add Task - Task Manager</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
+
 <body>
 
 <div class="container">
 
     <div class="header">
-        <h1>Add New Task</h1>
+        <h1>✨ Add New Task</h1>
         <p>Create a new task and keep track of your work.</p>
     </div>
 
@@ -21,12 +22,22 @@
 
             <div class="form-group">
                 <label>Task Name</label>
-                <input type="text" name="task_name" required>
+
+                <input
+                    type="text"
+                    name="task_name"
+                    placeholder="Enter your task name"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description"></textarea>
+
+                <textarea
+                    name="description"
+                    placeholder="Write a short description of your task..."
+                ></textarea>
             </div>
 
             <div class="form-group">
@@ -40,15 +51,22 @@
 
             <div class="form-group">
                 <label>Due Date</label>
-                <input type="date" name="due_date">
+
+                <input
+                    type="date"
+                    name="due_date"
+                >
             </div>
 
             <button type="submit" class="btn btn-primary">
-                Save Task
+                ✓ Save Task
             </button>
 
-            <a href="{{ route('tasks.index') }}" class="back-link">
-                Back to Tasks
+            <a
+                href="{{ route('tasks.index') }}"
+                class="back-link"
+            >
+                ← Back to Tasks
             </a>
 
         </form>
